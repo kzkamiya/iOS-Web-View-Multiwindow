@@ -62,6 +62,9 @@ static NSString * const kJSOverrides = @"(function () { 'use strict'; /*global d
 	
     // Create Web View
     UIWebView *webView = [self newWebView];
+    // inline video.
+    webView.allowsInlineMediaPlayback=YES;
+
     
     // Attach event handlers
     self.backBtn.action = @selector(navigateBack:);
@@ -69,7 +72,7 @@ static NSString * const kJSOverrides = @"(function () { 'use strict'; /*global d
     self.refreshBtn.action = @selector(refreshWebView:);
     
     // Load URL into web view
-    NSURL *url = [NSURL URLWithString:@"http://www.hesslerdesign.com/tests/js_window_methods/"];
+    NSURL *url = [NSURL URLWithString:@"https://google.com/"];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [webView loadRequest:requestObj];
     
@@ -152,6 +155,9 @@ static NSString * const kJSOverrides = @"(function () { 'use strict'; /*global d
             
             NSLog(@"window.open caught");
             UIWebView *webView = [self newWebView];
+            // inline video.
+            webView.allowsInlineMediaPlayback=YES;
+
             NSURL *url = [NSURL URLWithString:[NSString stringWithString:[methodAsArray objectAtIndex:1]]];
             NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
             [webView loadRequest:requestObj];
